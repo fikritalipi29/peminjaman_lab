@@ -20,6 +20,13 @@
     <!-- Custom styles for this template-->
     <link href="<?=base_url('public/')?>css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link href="<?=base_url('public/')?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<!-- SweetAlert2 -->
+	<link rel="stylesheet" href="<?= base_url('public/') ?>plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+	<!-- Toastr -->
+	<link rel="stylesheet" href="<?= base_url('public/') ?>plugins/toastr/toastr.min.css">
+
 </head>
 
 <body id="page-top">
