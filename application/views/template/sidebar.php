@@ -64,9 +64,28 @@
 			<!-- Nav Item - Verifikasi Peminjaman -->
 			<li class="nav-item">
 				<a class="nav-link" href="#">
-					<i class="fas fa-fw fa-book"></i>
+					<i class="fas fa-fw fa-history"></i>
 					<span>Riwayat Peminjaman</span></a>
 			</li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - User Management -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#masterDataLab"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Master Data Lab</span>
+                </a>
+                <div id="masterDataLab" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Komponen Master Data:</h6>
+                        <a class="collapse-item" href="#">Prodi</a>
+                        <a class="collapse-item" href="#">Laboratorium</a>
+                    </div>
+                </div>
+            </li>
 
 			<!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
