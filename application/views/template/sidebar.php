@@ -71,7 +71,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - User Management -->
+            <!-- Nav Item - Master Data Lab -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#masterDataLab"
                     aria-expanded="true" aria-controls="collapseTwo">

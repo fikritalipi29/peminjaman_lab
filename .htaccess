@@ -1,5 +1,5 @@
 RewriteEngine on
-RewriteBase /laporan/
+RewriteBase /peminjaman_lab/
 
 # Allow any files or directories that exist to be displayed directly
 RewriteCond %{REQUEST_FILENAME} !-f
