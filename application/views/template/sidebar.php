@@ -42,8 +42,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Komponen User:</h6>
-                        <a class="collapse-item" href="#">Biodata</a>
-                        <a class="collapse-item" href="#">Akun</a>
+                        <a class="collapse-item" href="<?= base_url('user/biodata'); ?>">Biodata</a>
+                        <a class="collapse-item" href="<?= base_url('user/akun'); ?>">Akun</a>
                     </div>
                 </div>
             </li>
