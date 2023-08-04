@@ -35,12 +35,12 @@ class UserModel extends CI_Model
 
 	public function getAkun()
 	{
-		return $this->db->select('a.*, b.*')->from('tbl_laboratorium a')->join('tbl_mst_prodi b','a.id_prodi = b.id_prodi','left')->where_not_in('a.id_prodi',1)->get()->result();
+		return $this->db->select('a.*, b.*')->from('tbl_user a')->join('tbl_biodata b','a.id_biodata = b.id_biodata','left')->where_not_in('a.id_biodata',1)->order_by('b.id_prodi','ASC')->get()->result();
 	}
 
 	public function newAkun($data)
 	{
-		return $this->db->insert('tbl_laboratorium',$data);
+		return $this->db->insert('tbl_user',$data);
 	}
 
 	public function deleteAkun($id)

@@ -29,7 +29,7 @@ class User extends CI_Controller {
 	
 	public function biodata_edit($id)
 	{
-		$data['title'] = "New Biodata User";
+		$data['title'] = "Edit Biodata User";
         $data['prodi'] = $this->MasterModel->getProdi();
         $data['biodata'] = $this->UserModel->getBiodataById($id);
 		$this->load->view('template/header', $data);
@@ -96,8 +96,7 @@ class User extends CI_Controller {
     public function akun()
 	{
 		$data['title'] = "Akun User";
-        $data['prodi'] = $this->MasterModel->getProdi();
-        $data['lab'] = $this->MasterModel->getLaboratorium();
+        $data['akun'] = $this->UserModel->getAkun();
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('template/navbar', $data);
@@ -108,19 +107,20 @@ class User extends CI_Controller {
     public function akun_new()
 	{
         $data = array(
-			'id_prodi'	=>  $this->input->post('id_prodi'),
-			'lab_name'	=>  $this->input->post('lab'),
-			'capacity'	=>  $this->input->post('kapasitas')
+			'username'	=>  $this->input->post('username'),
+			'password'	=>  $this->input->post('password'),
+			'id_biodata'	=>  $this->input->post('id_biodata'),
+			'role'	=>  $this->input->post('role')
 		);
 
-		$tambah = $this->MasterModel->newLaboratorium($data);
+		$tambah = $this->UserModel->newAkun($data);
 
 		if ($tambah == true) {
-			$this->session->set_flashdata('success', '<strong>SUCCESS!!!</strong> Berhasil Menambahakan Laboratorium Baru.');
+			$this->session->set_flashdata('success', '<strong>SUCCESS!!!</strong> Berhasil Menambahakan Akun Pengguna Baru.');
 		} else {
-			$this->session->set_flashdata('error', '<strong>ERROR!!!</strong> Gagal Menambahakan Laboratorium Baru.');
+			$this->session->set_flashdata('error', '<strong>ERROR!!!</strong> Gagal Menambahakan Akun Pengguna Baru.');
 		}
-		redirect('master/laboratorium');
+		redirect('user/akun');
 	}
 
     public function akun_hapus($id)
