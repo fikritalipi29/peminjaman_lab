@@ -39,17 +39,6 @@
                                     <th style="width: 10%;">Aksi</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th style="width: 5%;">No.</th>
-                                    <th style="width: 15%;">No. RFID</th>
-                                    <th style="width: 15%;">Nama Lengkap</th>
-                                    <th style="width: 20%;">Alamat</th>
-                                    <th style="width: 10%;">Jenis Kelamin</th>
-                                    <th style="width: 20%;">Program Studi</th>
-                                    <th style="width: 10%;">Aksi</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
 								<?php $no = 1; ?>
 								<?php foreach ($biodata as $v) : ?>

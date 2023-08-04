@@ -43,10 +43,21 @@ class UserModel extends CI_Model
 		return $this->db->insert('tbl_user',$data);
 	}
 
+	public function resetAkun($id)
+	{
+		$data = array(
+			'password' => MD5("Pengguna01")
+		);
+		$this->db->where('id_user', $id);
+		$this->db->update('tbl_user', $data);
+
+		return true;
+	}
+
 	public function deleteAkun($id)
 	{
-		$this->db->where('id_laboratorium', $id);
-		$this->db->delete('tbl_laboratorium');
+		$this->db->where('id_user', $id);
+		$this->db->delete('tbl_user');
 
 		return true;
 	}

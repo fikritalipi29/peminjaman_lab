@@ -97,6 +97,7 @@ class User extends CI_Controller {
 	{
 		$data['title'] = "Akun User";
         $data['akun'] = $this->UserModel->getAkun();
+        $data['biodata'] = $this->UserModel->getBiodata();
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('template/navbar', $data);
@@ -106,10 +107,11 @@ class User extends CI_Controller {
 
     public function akun_new()
 	{
+		$id = $this->db->select('id_biodata')->from('tbl_biodata')->where('no_card',$this->input->post('id_biodata'))->get()->row();
         $data = array(
 			'username'	=>  $this->input->post('username'),
-			'password'	=>  $this->input->post('password'),
-			'id_biodata'	=>  $this->input->post('id_biodata'),
+			'password'	=>  MD5($this->input->post('password')),
+			'id_biodata'	=>  $id->id_biodata,
 			'role'	=>  $this->input->post('role')
 		);
 
@@ -123,15 +125,27 @@ class User extends CI_Controller {
 		redirect('user/akun');
 	}
 
-    public function akun_hapus($id)
+    public function akun_reset_pass($id)
 	{
-        $hapus = $this->MasterModel->deleteLaboratorium($id);
+        $hapus = $this->UserModel->resetAkun($id);
 
 		if ($hapus == true) {
-			$this->session->set_flashdata('success', '<strong>SUCCESS!!!</strong> Berhasil Menghapus Laboratorium.');
+			$this->session->set_flashdata('success', '<strong>SUCCESS!!!</strong> Berhasil Mereset Password menjadi "Pengguna01".');
 		} else {
-			$this->session->set_flashdata('error', '<strong>ERROR!!!</strong> Gagal Menghapus Laboratorium.');
+			$this->session->set_flashdata('error', '<strong>ERROR!!!</strong> Gagal Mereset Password menjadi "Pengguna01".');
 		}
-		redirect('master/laboratorium');
+		redirect('user/akun');
+	}
+
+    public function akun_hapus($id)
+	{
+        $hapus = $this->UserModel->deleteAkun($id);
+
+		if ($hapus == true) {
+			$this->session->set_flashdata('success', '<strong>SUCCESS!!!</strong> Berhasil Menghapus Akun User.');
+		} else {
+			$this->session->set_flashdata('error', '<strong>ERROR!!!</strong> Gagal Menghapus Akun User.');
+		}
+		redirect('user/akun');
 	}
 }

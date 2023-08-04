@@ -31,17 +31,6 @@
                                     <th style="width: 10%;">Aksi</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th style="width: 5%;">No.</th>
-                                    <th style="width: 15%;">Laboratorium</th>
-                                    <th style="width: 15%;">Nama Peminjaman</th>
-                                    <th style="width: 20%;">Tanggal Peminjaman</th>
-                                    <th style="width: 10%;">Waktu Mulai Peminjaman</th>
-                                    <th style="width: 20%;">Waktu Selesai Peminjaman</th>
-                                    <th style="width: 10%;">Aksi</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
 								<?php $no = 1; ?>
 								<?php foreach ($verifikasi as $v) : ?>

@@ -50,13 +50,6 @@
                                     <th style="width: 5%;">Aksi</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th style="width: 5%;">No.</th>
-                                    <th style="width: 90%;">Program Studi</th>
-                                    <th style="width: 5%;">Aksi</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
 								<?php $no = 1; ?>
 								<?php foreach ($prodi as $v) : ?>

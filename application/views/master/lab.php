@@ -65,15 +65,6 @@
                                     <th style="width: 5%;">Aksi</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th style="width: 5%;">No.</th>
-                                    <th style="width: 40%;">Program Studi</th>
-                                    <th style="width: 40%;">Nama Laboratorium</th>
-                                    <th style="width: 10%;">Kapasitas</th>
-                                    <th style="width: 5%;">Aksi</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
 								<?php $no = 1; ?>
 								<?php foreach ($lab as $v) : ?>
