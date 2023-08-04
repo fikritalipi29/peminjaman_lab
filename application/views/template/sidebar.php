@@ -53,7 +53,7 @@
 
 			<!-- Nav Item - Verifikasi Peminjaman -->
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="<?= base_url('verifikasi') ?>">
 					<i class="fas fa-fw fa-check"></i>
 					<span>Verifikasi Peminjaman</span></a>
 			</li>
@@ -63,7 +63,7 @@
 
 			<!-- Nav Item - Verifikasi Peminjaman -->
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="<?= base_url('riwayat') ?>">
 					<i class="fas fa-fw fa-history"></i>
 					<span>Riwayat Peminjaman</span></a>
 			</li>
