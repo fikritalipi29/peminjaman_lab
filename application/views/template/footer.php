@@ -36,7 +36,7 @@
                 <div class="modal-body">Klik aja "Keluar" kalau pengen keluar.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-danger" href="login.html">Keluar</a>
+                    <a class="btn btn-danger" href="<?= base_url('auth/logout') ?>">Keluar</a>
                 </div>
             </div>
         </div>

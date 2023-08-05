@@ -21,13 +21,17 @@ class Auth extends CI_Controller {
                     $biodata = $this->db->where('id_biodata', $cekEmail->id_biodata)->from('tbl_biodata')->get()->row();
 					$data_session = array(
                         'id' =>  $biodata->id_biodata,
-						'nama' => $biodata->id_biodata,
+						'nama' => $biodata->full_name,
 						'prodi' => $biodata->id_prodi,
 						'role' => $cekEmail->role
 					);
 					$this->session->set_userdata($data_session);
 
-					redirect('dashboard');
+                    if($cekEmail->role == '3') {
+                        redirect('peminjaman');
+                    }else {
+                        redirect('dashboard');
+                    }
 			} else {
 				$this->session->set_flashdata('error', '<strong>ERROR!!!</strong> Password Yang Anda Masukan Tidak Sesuai.');
 				redirect('auth/login');
