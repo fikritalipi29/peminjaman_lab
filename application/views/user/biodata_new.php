@@ -21,7 +21,14 @@
 					<div class="card-body">
 						<div class="form-group">
 							<label for="rfid">No. RFID</label>
-							<input type="text" class="form-control" id="rfid" name="rfid" placeholder="Nomer Kartu RFID" required>
+							<div class="input-group">
+								<input type="text" class="form-control" id="rfid" name="rfid" placeholder="Nomer Kartu RFID" readonly required>
+									<div class="input-group-append">
+										<button class="btn btn-primary" type="button">
+											<i class="fas fa-search fa-sm"></i>
+										</button>
+									</div>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="full_name">Nama Lengkap</label>
