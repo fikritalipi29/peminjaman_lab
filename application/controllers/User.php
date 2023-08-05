@@ -6,8 +6,11 @@ class User extends CI_Controller {
 	public function biodata()
 	{
 		$data['title'] = "Biodata User";
-        $data['prodi'] = $this->MasterModel->getProdi();
-        $data['biodata'] = $this->UserModel->getBiodata();
+		if ($this->session->userdata('role') == '0') {
+			$data['biodata'] = $this->UserModel->getBiodata();
+		}else{
+        	$data['biodata'] = $this->UserModel->getBiodataByProdi($this->session->userdata('prodi'));
+		}
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('template/navbar', $data);
@@ -18,8 +21,9 @@ class User extends CI_Controller {
 	public function biodata_new()
 	{
 		$data['title'] = "New Biodata User";
-        $data['prodi'] = $this->MasterModel->getProdi();
-        $data['biodata'] = $this->UserModel->getBiodata();
+		if ($this->session->userdata('role') == '0') {
+			$data['prodi'] = $this->MasterModel->getProdi();
+		}
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('template/navbar', $data);
@@ -30,7 +34,9 @@ class User extends CI_Controller {
 	public function biodata_edit($id)
 	{
 		$data['title'] = "Edit Biodata User";
-        $data['prodi'] = $this->MasterModel->getProdi();
+		if ($this->session->userdata('role') == '0') {
+			$data['prodi'] = $this->MasterModel->getProdi();
+		}
         $data['biodata'] = $this->UserModel->getBiodataById($id);
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);
@@ -41,12 +47,18 @@ class User extends CI_Controller {
 
     public function biodata_proses()
 	{
+		if ($this->session->userdata('role') == '0') {
+			$prodi = $this->input->post('id_prodi');
+		}else {
+			$prodi = $this->session->userdata('prodi');
+		}
+
         $data = array(
 			'no_card'	=>  $this->input->post('rfid'),
 			'full_name'	=>  $this->input->post('full_name'),
 			'address'	=>  $this->input->post('alamat'),
 			'jk'	=>  $this->input->post('jk'),
-			'id_prodi'	=>  $this->input->post('id_prodi')
+			'id_prodi'	=>  $prodi
 		);
 
 		$tambah = $this->UserModel->newBiodata($data);
@@ -63,11 +75,17 @@ class User extends CI_Controller {
 	{
         $id = $this->input->post('id_biodata');
 
+		if ($this->session->userdata('role') == '0') {
+			$prodi = $this->input->post('id_prodi');
+		}else {
+			$prodi = $this->session->userdata('prodi');
+		}
+
         $data = array(
 			'full_name'	=>  $this->input->post('full_name'),
 			'address'	=>  $this->input->post('alamat'),
 			'jk'	=>  $this->input->post('jk'),
-			'id_prodi'	=>  $this->input->post('id_prodi')
+			'id_prodi'	=>  $prodi
 		);
 
 		$tambah = $this->UserModel->editBiodata($data, $id);

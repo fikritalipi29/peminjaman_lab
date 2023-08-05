@@ -39,6 +39,7 @@
 							<label for="alamat">Alamat</label>
 							<textarea class="form-control" id="alamat" name="alamat"></textarea>
 						</div>
+						<?php if($this->session->userdata('role') == '0') : ?>
                         <div class="form-group">
                             <label for="id_prodi">Pilih Program Studi</label>
                             <select class="form-control" id="id_prodi" name="id_prodi" required>
@@ -48,6 +49,7 @@
                                 <?php } ?>
                             </select>
                         </div>
+						<?php endif; ?>
 					</div>
 					<div class="card-footer justify-content-right">
 						<button type="submit" class="btn btn-primary">Tambah</button>

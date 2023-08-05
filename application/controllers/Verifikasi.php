@@ -6,7 +6,6 @@ class Verifikasi extends CI_Controller {
     public function index()
 	{
 		$data['title'] = "Riwayat Peminjaman";
-        $data['prodi'] = $this->MasterModel->getProdi();
 		if ($this->session->userdata('role') == '0') {
         	$data['verifikasi'] = $this->PeminjamanModel->getAllVerifikasi();
 		}else{
