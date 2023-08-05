@@ -26,7 +26,7 @@ class Peminjaman extends CI_Controller {
 	{
         $data = array(
 			'id_lab'	=>  $this->input->post('id_lab'),
-			'id_biodata'	=>  1, //diganti dengan id_biodata user
+			'id_biodata'	=>  $this->session->userdata('id'),
 			'start_time'	=>  date('Y-m-d H:i:s', strtotime($this->input->post('tgl'))),
 			'end_time'	=>  date('Y-m-d H:i:s', strtotime($this->input->post('tgl') . ' + 8 hours')),
 			'status'	=>  "1"
