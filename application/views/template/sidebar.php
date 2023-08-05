@@ -12,6 +12,8 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            <?php if ($this->session->userdata('role') == '0') { ?>
+                
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="#">
@@ -86,6 +88,122 @@
                     </div>
                 </div>
             </li>
+
+            <?php }elseif ($this->session->userdata('role') == '1') { ?>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Beranda</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+			<!-- Nav Item - User Management -->
+			<li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>User Manajemen</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Komponen User:</h6>
+                        <a class="collapse-item" href="<?= base_url('user/biodata'); ?>">Biodata</a>
+                        <a class="collapse-item" href="<?= base_url('user/akun'); ?>">Akun</a>
+                    </div>
+                </div>
+            </li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Nav Item - Verifikasi Peminjaman -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('verifikasi') ?>">
+					<i class="fas fa-fw fa-check"></i>
+					<span>Verifikasi Peminjaman</span></a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Nav Item - Verifikasi Peminjaman -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('riwayat') ?>">
+					<i class="fas fa-fw fa-history"></i>
+					<span>Riwayat Peminjaman</span></a>
+			</li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Master Data Lab -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#masterDataLab"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Master Data Lab</span>
+                </a>
+                <div id="masterDataLab" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Komponen Master Data:</h6>
+                        <a class="collapse-item" href="<?= base_url('master/laboratorium'); ?>">Laboratorium</a>
+                    </div>
+                </div>
+            </li>
+
+            <?php }elseif ($this->session->userdata('role') == '2') { ?>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Beranda</span></a>
+            </li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Nav Item - Verifikasi Peminjaman -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('verifikasi') ?>">
+					<i class="fas fa-fw fa-check"></i>
+					<span>Verifikasi Peminjaman</span></a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Nav Item - Verifikasi Peminjaman -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('riwayat') ?>">
+					<i class="fas fa-fw fa-history"></i>
+					<span>Riwayat Peminjaman</span></a>
+			</li>
+
+            <?php }elseif ($this->session->userdata('role') == '3') { ?>
+
+			<!-- Nav Item - Peminjaman -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('peminjaman') ?>">
+					<i class="fas fa-fw fa-gift"></i>
+					<span>Peminjaman</span></a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Nav Item - Verifikasi Peminjaman -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('riwayat') ?>">
+					<i class="fas fa-fw fa-history"></i>
+					<span>Riwayat Peminjaman</span></a>
+			</li>
+
+            <?php } ?>
 
 			<!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
