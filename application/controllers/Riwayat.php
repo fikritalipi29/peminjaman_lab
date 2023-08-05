@@ -6,7 +6,6 @@ class Riwayat extends CI_Controller {
     public function index()
 	{
 		$data['title'] = "Riwayat Peminjaman";
-        //tambahkan if untuk  membedakan peminjam, admin, kepala lab, dan super admin
 		if ($this->session->userdata('role') == '0') {
 			$data['riwayat'] = $this->PeminjamanModel->getAllPinjam();
 		}elseif ($this->session->userdata('role') == '3') {
