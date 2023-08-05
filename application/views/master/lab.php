@@ -19,6 +19,9 @@
 				</div>
 				<form action="<?= site_url('master/laboratorium_new') ?>" method="POST">
 					<div class="card-body">
+						
+						<?php if($this->session->userdata('role') == '0') : ?>
+
                         <div class="form-group">
                             <label for="id_prodi">Pilih Program Studi</label>
                             <select class="form-control" id="id_prodi" name="id_prodi" required>
@@ -28,6 +31,9 @@
                                 <?php } ?>
                             </select>
                         </div>
+
+						<?php endif; ?>
+
 						<div class="form-group">
 							<label for="lab">Nama Laboratorium</label>
 							<input type="text" class="form-control" id="lab" name="lab" placeholder="Nama Laboratorium" required>

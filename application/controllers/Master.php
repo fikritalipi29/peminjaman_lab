@@ -46,8 +46,13 @@ class Master extends CI_Controller {
     public function laboratorium()
 	{
 		$data['title'] = "Master Data Laboratorium";
-        $data['prodi'] = $this->MasterModel->getProdi();
-        $data['lab'] = $this->MasterModel->getLaboratorium();
+		if ($this->session->userdata('role') == '0') {
+			$data['prodi'] = $this->MasterModel->getProdi();
+			$data['lab'] = $this->MasterModel->getLaboratorium();
+		}else {
+			$data['lab'] = $this->MasterModel->getLaboratoriumByProdi($this->session->userdata('prodi'));
+		}
+		
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('template/navbar', $data);
@@ -57,8 +62,14 @@ class Master extends CI_Controller {
 
     public function laboratorium_new()
 	{
+		if ($this->session->userdata('role') == '0') {
+			$prodi = $this->input->post('id_prodi');
+		}else {
+			$prodi = $this->session->userdata('prodi');
+		}
+
         $data = array(
-			'id_prodi'	=>  $this->input->post('id_prodi'),
+			'id_prodi'	=>  $prodi,
 			'lab_name'	=>  $this->input->post('lab'),
 			'capacity'	=>  $this->input->post('kapasitas')
 		);

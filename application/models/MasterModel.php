@@ -25,6 +25,11 @@ class MasterModel extends CI_Model
 		return $this->db->select('a.*, b.*')->from('tbl_laboratorium a')->join('tbl_mst_prodi b','a.id_prodi = b.id_prodi','left')->where_not_in('a.id_prodi',1)->get()->result();
 	}
 
+	public function getLaboratoriumByProdi($id)
+	{
+		return $this->db->select('a.*, b.*')->from('tbl_laboratorium a')->join('tbl_mst_prodi b','a.id_prodi = b.id_prodi','left')->where('a.id_prodi',$id)->get()->result();
+	}
+
 	public function newLaboratorium($data)
 	{
 		return $this->db->insert('tbl_laboratorium',$data);
