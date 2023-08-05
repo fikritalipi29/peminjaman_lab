@@ -7,8 +7,11 @@ class Verifikasi extends CI_Controller {
 	{
 		$data['title'] = "Riwayat Peminjaman";
         $data['prodi'] = $this->MasterModel->getProdi();
-        //tambahkan if untuk  membedakan peminjam, admin, kepala lab, dan super admin
-        $data['verifikasi'] = $this->PeminjamanModel->getAllVerifikasi();
+		if ($this->session->userdata('role') == '0') {
+        	$data['verifikasi'] = $this->PeminjamanModel->getAllVerifikasi();
+		}else{
+			$data['verifikasi'] = $this->PeminjamanModel->getAllVerifikasiByProdi($this->session->userdata('prodi'));
+		}
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('template/navbar', $data);
