@@ -19,6 +19,10 @@
 
     <!-- Custom styles for this template-->
     <link href="<?=base_url('public/')?>css/sb-admin-2.min.css" rel="stylesheet">
+	<!-- SweetAlert2 -->
+	<link rel="stylesheet" href="<?= base_url('public/') ?>plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+	<!-- Toastr -->
+	<link rel="stylesheet" href="<?= base_url('public/') ?>plugins/toastr/toastr.min.css">
 
 </head>
 
@@ -40,9 +44,9 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang di Pinjam<sup>Yuk</sup></h1>
                                     </div>
-                                    <form class="user" action="<?= base_url('auth/proses') ?>">
+                                    <form class="user" action="<?= base_url('auth/proses') ?>" method="POST">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input type="text" class="form-control form-control-user"
                                                 id="username" name="username" aria-describedby="emailHelp"
                                                 placeholder="Username">
                                         </div>
@@ -73,8 +77,41 @@
     <!-- Core plugin JavaScript-->
     <script src="<?=base_url('public/')?>vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <!-- SweetAlert2 -->
+    <script src="<?= base_url('public/') ?>plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Toastr -->
+    <script src="<?= base_url('public/') ?>plugins/toastr/toastr.min.js"></script>
+
     <!-- Custom scripts for all pages-->
     <script src="<?=base_url('public/')?>js/sb-admin-2.min.js"></script>
+
+    <?php if ($this->session->flashdata('error')) { ?>
+        <script>
+            $(function() {
+                var Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+
+                toastr.error('<?php echo $this->session->flashdata('error'); ?>')
+            });
+        </script>
+    <?php } else if ($this->session->flashdata('success')) { ?>
+        <script>
+            $(function() {
+                var Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+
+                toastr.success('<?php echo $this->session->flashdata('success'); ?>')
+            });
+        </script>
+    <?php } ?>
 
 </body>
 
