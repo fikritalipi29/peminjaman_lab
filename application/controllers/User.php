@@ -114,8 +114,13 @@ class User extends CI_Controller {
     public function akun()
 	{
 		$data['title'] = "Akun User";
-        $data['akun'] = $this->UserModel->getAkun();
-        $data['biodata'] = $this->UserModel->getBiodata();
+		if ($this->session->userdata('role') == '0') {
+			$data['akun'] = $this->UserModel->getAkun();
+			$data['biodata'] = $this->UserModel->getBiodata();
+		}else{
+			$data['akun'] = $this->UserModel->getAkunByProdi($this->session->userdata('prodi'));
+        	$data['biodata'] = $this->UserModel->getBiodataByProdi($this->session->userdata('prodi'));
+		}
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('template/navbar', $data);

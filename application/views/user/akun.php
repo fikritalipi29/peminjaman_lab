@@ -77,8 +77,9 @@
                             <thead>
                                 <tr>
                                     <th style="width: 5%;">No.</th>
-                                    <th style="width: 40%;">Username</th>
-                                    <th style="width: 40%;">Nama Pengguna</th>
+                                    <th style="width: 20%;">Username</th>
+                                    <th style="width: 30%;">Nama Pengguna</th>
+                                    <th style="width: 30%;">Hak Akses</th>
                                     <th style="width: 15%;">Aksi</th>
                                 </tr>
                             </thead>
@@ -89,6 +90,15 @@
                                     <td><?= $no++ ?></td>
                                     <td><?= $v->username; ?></td>
                                     <td><?= $v->full_name; ?></td>
+                                    <td>
+										<?php if ($v->role == '1') : ?>
+											Admin / Asisten Laboratorium
+										<?php elseif ($v->role == '2') : ?>
+											Kepala Laboratorium
+										<?php elseif ($v->role == '3') : ?>
+											Peminjam
+										<?php endif; ?>
+                                    </td>
                                     <td>
                                         <a href="<?= base_url('user/akun_reset_pass/'.$v->id_user) ?>">
 											<button class="btn btn-warning btn-circle btn-sm" title="Reset Password">
