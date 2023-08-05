@@ -34,7 +34,7 @@ class PeminjamanModel extends CI_Model
 						->from('tbl_peminjaman a')
 						->join('tbl_laboratorium b','a.id_lab = b.id_laboratorium', 'left')
 						->join('tbl_biodata c','a.id_biodata = c.id_biodata', 'left')
-						->where('id_biodata',$id)
+						->where('a.id_biodata',$id)
 						->get()
 						->result();
 	}
