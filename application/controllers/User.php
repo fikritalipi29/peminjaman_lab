@@ -5,6 +5,10 @@ class User extends CI_Controller {
 	
 	public function biodata()
 	{
+		if(!empty($this->session->userdata('rfid_data'))){
+			$this->session->unset_userdata('rfid_data');
+		}
+
 		$data['title'] = "Biodata User";
 		if ($this->session->userdata('role') == '0') {
 			$data['biodata'] = $this->UserModel->getBiodata();
@@ -24,15 +28,28 @@ class User extends CI_Controller {
 		if ($this->session->userdata('role') == '0') {
 			$data['prodi'] = $this->MasterModel->getProdi();
 		}
+		$data['rfid_data'] = $this->session->userdata('rfid_data');
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('template/navbar', $data);
 		$this->load->view('user/biodata_new', $data);
 		$this->load->view('template/footer', $data);
 	}
+
+	public function get_rfid() {
+
+		$rfid_data = $this->input->post('rfid');
+		$this->session->set_userdata('rfid_data', $rfid_data);
+
+		redirect('user/biodata_new');
+	}
 	
 	public function biodata_edit($id)
 	{
+		if(!empty($this->session->userdata('rfid_data'))){
+			$this->session->unset_userdata('rfid_data');
+		}
+
 		$data['title'] = "Edit Biodata User";
 		if ($this->session->userdata('role') == '0') {
 			$data['prodi'] = $this->MasterModel->getProdi();
@@ -113,6 +130,10 @@ class User extends CI_Controller {
 
     public function akun()
 	{
+		if(!empty($this->session->userdata('rfid_data'))){
+			$this->session->unset_userdata('rfid_data');
+		}
+
 		$data['title'] = "Akun User";
 		if ($this->session->userdata('role') == '0') {
 			$data['akun'] = $this->UserModel->getAkun();

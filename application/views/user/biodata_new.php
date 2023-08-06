@@ -22,7 +22,7 @@
 						<div class="form-group">
 							<label for="rfid">No. RFID</label>
 							<div class="input-group">
-								<input type="text" class="form-control" id="rfid" name="rfid" placeholder="Nomer Kartu RFID" readonly required>
+								<input type="text" class="form-control" id="rfid" name="rfid" placeholder="Nomer Kartu RFID" value="<?php echo $rfid_data ?? ''; ?>" readonly required>
 									<div class="input-group-append">
 										<button class="btn btn-primary" type="button">
 											<i class="fas fa-search fa-sm"></i>
