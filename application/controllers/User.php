@@ -2,6 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
+
+    public function __construct() {
+        parent::__construct();
+    }
 	
 	public function biodata()
 	{
@@ -21,6 +25,18 @@ class User extends CI_Controller {
 		$this->load->view('user/biodata', $data);
 		$this->load->view('template/footer', $data);
 	}
+
+	public function get_rfid() 
+	{
+		$rfid = $this->input->post('rfid');
+		if (!empty($rfid)){
+			$rfid_without_spaces = str_replace(' ', '', $rfid);
+
+			$this->db->insert('temporary_data', array('rfid_data' => $rfid_without_spaces));
+	
+			echo "OK Data RFID adalah : " . $rfid_without_spaces;
+		}
+	}
 	
 	public function biodata_new()
 	{
@@ -28,20 +44,12 @@ class User extends CI_Controller {
 		if ($this->session->userdata('role') == '0') {
 			$data['prodi'] = $this->MasterModel->getProdi();
 		}
-		$data['rfid_data'] = $this->session->userdata('rfid_data');
+		$data['rfid_data'] = $this->UserModel->getLastTemporaryData();
 		$this->load->view('template/header', $data);
 		$this->load->view('template/sidebar', $data);
 		$this->load->view('template/navbar', $data);
 		$this->load->view('user/biodata_new', $data);
 		$this->load->view('template/footer', $data);
-	}
-
-	public function get_rfid() {
-
-		$rfid_data = $this->input->post('rfid');
-		$this->session->set_userdata('rfid_data', $rfid_data);
-
-		redirect('user/biodata_new');
 	}
 	
 	public function biodata_edit($id)
@@ -82,8 +90,10 @@ class User extends CI_Controller {
 
 		if ($tambah == true) {
 			$this->session->set_flashdata('success', '<strong>SUCCESS!!!</strong> Berhasil Menambahakan Biodata Pengguna Baru.');
+			$this->db->empty_table('temporary_data');
 		} else {
 			$this->session->set_flashdata('error', '<strong>ERROR!!!</strong> Gagal Menambahakan Biodata Pengguna Baru.');
+			$this->db->empty_table('temporary_data');
 		}
 		redirect('user/biodata');
 	}

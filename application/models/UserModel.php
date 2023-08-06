@@ -72,4 +72,11 @@ class UserModel extends CI_Model
 
 		return true;
 	}
+
+	public function getLastTemporaryData() {
+        $this->db->order_by('timestamp', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get('temporary_data');
+        return $query->row();
+    }
 }

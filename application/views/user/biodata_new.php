@@ -22,11 +22,11 @@
 						<div class="form-group">
 							<label for="rfid">No. RFID</label>
 							<div class="input-group">
-								<input type="text" class="form-control" id="rfid" name="rfid" placeholder="Nomer Kartu RFID" value="<?php echo $rfid_data ?? ''; ?>" readonly required>
+								<input type="text" class="form-control" id="rfid" name="rfid" placeholder="Nomer Kartu RFID" value="<?php if(!empty($rfid_data->rfid_data)){echo $rfid_data->rfid_data;}else{echo "No Card";}?>" readonly required>
 									<div class="input-group-append">
-										<button class="btn btn-primary" type="button">
+										<a href="<?= base_url('user/biodata_new') ?>" class="btn btn-primary" type="button">
 											<i class="fas fa-search fa-sm"></i>
-										</button>
+										</a>
 									</div>
 							</div>
 						</div>
