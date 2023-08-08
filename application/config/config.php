@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://192.168.101.197/peminjaman_lab/';
+$config['base_url'] = 'http://localhost/peminjaman_lab/';
 
 /*
 |--------------------------------------------------------------------------
