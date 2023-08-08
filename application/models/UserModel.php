@@ -79,4 +79,12 @@ class UserModel extends CI_Model
         $query = $this->db->get('temporary_data');
         return $query->row();
     }
+
+	public function changeMode($data, $id)
+	{
+		$this->db->where('id', $id);
+		$this->db->update('mode_rfid', $data);
+
+		return true;
+	}
 }

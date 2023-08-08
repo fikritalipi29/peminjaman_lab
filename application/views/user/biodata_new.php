@@ -15,6 +15,11 @@
 						<div class="col-lg-10">
 							<h4 class="card-title">Biodata User Baru</h4>
 						</div>
+						<div class="col-lg-2">
+							<a href="<?= base_url('user/change_mode') ?>" class="btn btn-primary">
+                        	    <span class="text">Rubah Mode RFID</span>
+                        	</a>
+						</div>
 					</div>
 				</div>
 				<form action="<?= site_url('user/biodata_proses') ?>" method="POST">

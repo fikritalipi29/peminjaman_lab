@@ -13,3 +13,10 @@ CREATE TABLE temporary_data (
     rfid_data VARCHAR(255),
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE mode_rfid (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    status ENUM('1', '2') NOT NULL
+);
+
+INSERT INTO `mode_rfid` (`id`, `status`) VALUES ('1', '1');

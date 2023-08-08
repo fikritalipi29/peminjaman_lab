@@ -9,9 +9,11 @@ class User extends CI_Controller {
 	
 	public function biodata()
 	{
-		if(!empty($this->session->userdata('rfid_data'))){
-			$this->session->unset_userdata('rfid_data');
-		}
+		$data = array(
+			'status'	=>  "1"
+		);
+
+		$this->UserModel->changeMode($data, 1);
 
 		$data['title'] = "Biodata User";
 		if ($this->session->userdata('role') == '0') {
@@ -24,18 +26,6 @@ class User extends CI_Controller {
 		$this->load->view('template/navbar', $data);
 		$this->load->view('user/biodata', $data);
 		$this->load->view('template/footer', $data);
-	}
-
-	public function get_rfid() 
-	{
-		$rfid = $this->input->post('rfid');
-		if (!empty($rfid)){
-			$rfid_without_spaces = str_replace(' ', '', $rfid);
-
-			$this->db->insert('temporary_data', array('rfid_data' => $rfid_without_spaces));
-	
-			echo "OK Data RFID adalah : " . $rfid_without_spaces;
-		}
 	}
 	
 	public function biodata_new()
@@ -50,6 +40,23 @@ class User extends CI_Controller {
 		$this->load->view('template/navbar', $data);
 		$this->load->view('user/biodata_new', $data);
 		$this->load->view('template/footer', $data);
+	}
+
+	public function change_mode()
+	{
+		$data = array(
+			'status'	=>  "2"
+		);
+
+		$rubah = $this->UserModel->changeMode($data, 1);
+		
+		if ($rubah == true) {
+			$this->session->set_flashdata('success', '<strong>SUCCESS!!!</strong> Berhasil Merubah Mode Alat Pemindai.');
+		} else {
+			$this->session->set_flashdata('error', '<strong>ERROR!!!</strong> Gagal Merubah Mode Alat Pemindai.');
+		}
+
+		redirect('user/biodata_new');
 	}
 	
 	public function biodata_edit($id)
@@ -91,6 +98,11 @@ class User extends CI_Controller {
 		if ($tambah == true) {
 			$this->session->set_flashdata('success', '<strong>SUCCESS!!!</strong> Berhasil Menambahakan Biodata Pengguna Baru.');
 			$this->db->empty_table('temporary_data');
+			$data = array(
+				'status'	=>  "1"
+			);
+	
+			$this->UserModel->changeMode($data, 1);
 		} else {
 			$this->session->set_flashdata('error', '<strong>ERROR!!!</strong> Gagal Menambahakan Biodata Pengguna Baru.');
 			$this->db->empty_table('temporary_data');
